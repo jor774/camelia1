@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<!-- saved from url=(0064)file:///C:/Users/cetes/Downloads/portfolio_bento_grid%20(1).html -->
+<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lali | Portfolio Personal</title>
+    
+    <!-- Google Fonts: Fredoka -->
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link href="./Lali _ Portfolio Personal_files/css2" rel="stylesheet">
+
+    <style>
+        :root {
+            --color-primary: #24BFC2;
+            --color-primary-light: #E6F8F8;
+            --color-primary-dark: #1A9294;
+            --color-secondary: #FFE14D;
+            --color-secondary-light: #FFF9D6;
+            --color-bg: #FFFFFF;
+            --color-card-bg: #F8FCFC;
+            --color-text-dark: #2C3E50;
+            --color-text-muted: #6C7A89;
+            --color-shadow: rgba(36, 191, 194, 0.15);
+            --radius-bento: 24px;
+            --radius-pill: 50px;
+            --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Fredoka', cursive, sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-text-dark);
+            min-height: 100vh;
+            padding: 2rem 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .profile-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .avatar-wrapper {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            padding: 6px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            box-shadow: 0 10px 25px var(--color-shadow);
+            transition: var(--transition-smooth);
+        }
+
+        .avatar-wrapper:hover {
+            transform: scale(1.05) rotate(3deg);
+        }
+
+        .avatar-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: #FFF;
+            object-fit: cover;
+            border: 4px solid var(--color-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .avatar-svg {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, #E0F7F7 0%, #FFF 100%);
+        }
+
+        .profile-name {
+            font-size: 2.75rem;
+            font-weight: 700;
+            color: var(--color-text-dark);
+            line-height: 1.1;
+            letter-spacing: -0.5px;
+        }
+
+        .badge-subtitle {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--color-secondary);
+            color: var(--color-text-dark);
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 0.5rem 1.25rem;
+            border-radius: var(--radius-pill);
+            box-shadow: 0 4px 12px rgba(255, 225, 77, 0.4);
+            border: 2px solid rgba(0,0,0,0.05);
+        }
+
+        .tabs-nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            background-color: var(--color-primary-light);
+            padding: 0.6rem;
+            border-radius: var(--radius-pill);
+            margin: 0.5rem auto;
+            max-width: fit-content;
+            border: 2px solid rgba(36, 191, 194, 0.2);
+        }
+
+        .tab-btn {
+            font-family: 'Fredoka', cursive, sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 0.6rem 1.25rem;
+            border: none;
+            border-radius: var(--radius-pill);
+            background: transparent;
+            color: var(--color-text-dark);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            outline: none;
+        }
+
+        .tab-btn:hover {
+            background-color: rgba(255, 255, 255, 0.8);
+            color: var(--color-primary-dark);
+        }
+
+        .tab-btn.active {
+            background-color: var(--color-primary);
+            color: #FFFFFF;
+            font-weight: 600;
+            box-shadow: 0 4px 12px var(--color-shadow);
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1.25rem;
+            width: 100%;
+        }
+
+        .bento-card {
+            background-color: var(--color-card-bg);
+            border-radius: var(--radius-bento);
+            padding: 1.5rem;
+            border: 2.5px solid var(--color-primary-light);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            grid-column: span 12; /* Default full width */
+        }
+
+        .bento-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 28px var(--color-shadow);
+            border-color: var(--color-primary);
+        }
+
+        /* Card grid span variations */
+        .col-span-6 { grid-column: span 6; }
+        .col-span-4 { grid-column: span 4; }
+        .col-span-8 { grid-column: span 8; }
+
+        /* Color accent variations */
+        .card-accent-primary {
+            background: linear-gradient(135deg, #FFFFFF 0%, #F0FBFC 100%);
+            border-color: var(--color-primary);
+        }
+
+        .card-accent-secondary {
+            background: linear-gradient(135deg, #FFFFFF 0%, var(--color-secondary-light) 100%);
+            border-color: var(--color-secondary);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            width: 100%;
+            background: transparent;
+            border: none;
+            font-family: inherit;
+            text-align: left;
+            color: inherit;
+        }
+
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .card-icon-box {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background-color: var(--color-primary-light);
+            color: var(--color-primary-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .card-title {
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: var(--color-text-dark);
+        }
+
+        .toggle-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: #FFFFFF;
+            border: 2px solid var(--color-primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-primary);
+            font-size: 0.9rem;
+            transition: var(--transition-smooth);
+            flex-shrink: 0;
+        }
+
+        .bento-card.open .toggle-icon {
+            transform: rotate(180deg);
+            background-color: var(--color-primary);
+            color: #FFFFFF;
+            border-color: var(--color-primary);
+        }
+
+        .card-body {
+            max-height: 1000px;
+            opacity: 1;
+            transition: max-height 0.4s ease, opacity 0.3s ease, margin 0.3s ease;
+            margin-top: 1rem;
+            overflow: hidden;
+            font-size: 1.05rem;
+            color: var(--color-text-dark);
+            line-height: 1.6;
+        }
+
+        .bento-card.closed .card-body {
+            max-height: 0;
+            opacity: 0;
+            margin-top: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+            pointer-events: none;
+        }
+
+        /* Specific content styling */
+        .info-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+        }
+
+        .info-pill {
+            background-color: var(--color-primary-light);
+            color: var(--color-primary-dark);
+            padding: 0.4rem 0.8rem;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            background-color: var(--color-primary);
+            color: #FFFFFF;
+            font-family: 'Fredoka', cursive, sans-serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            padding: 0.8rem 1.5rem;
+            border-radius: var(--radius-pill);
+            text-decoration: none;
+            box-shadow: 0 6px 16px var(--color-shadow);
+            transition: var(--transition-smooth);
+            border: none;
+            margin-top: 0.75rem;
+            cursor: pointer;
+            width: fit-content;
+        }
+
+        .contact-btn:hover {
+            background-color: var(--color-primary-dark);
+            transform: scale(1.03);
+            box-shadow: 0 8px 20px var(--color-shadow);
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            width: 100%;
+            margin-top: 0.5rem;
+        }
+
+        .gallery-item {
+            aspect-ratio: 4 / 3;
+            border-radius: 16px;
+            background: linear-gradient(135deg, var(--color-primary-light), var(--color-secondary-light));
+            border: 2px dashed var(--color-primary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.04);
+            border-style: solid;
+            box-shadow: 0 8px 20px var(--color-shadow);
+            background: linear-gradient(135deg, #D4F4F5, #FFF3B3);
+        }
+
+        .gallery-icon {
+            font-size: 2rem;
+            color: var(--color-primary-dark);
+        }
+
+        .gallery-label {
+            font-weight: 600;
+            color: var(--color-text-dark);
+            font-size: 1rem;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(44, 62, 80, 0.75);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition-smooth);
+            padding: 1.5rem;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background-color: #FFFFFF;
+            border-radius: var(--radius-bento);
+            width: 100%;
+            max-width: 650px;
+            padding: 2rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+            position: relative;
+            transform: scale(0.85);
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.25rem;
+            border: 4px solid var(--color-primary);
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--color-secondary);
+            border: 2px solid var(--color-text-dark);
+            color: var(--color-text-dark);
+            font-size: 1.25rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .modal-close-btn:hover {
+            transform: scale(1.1) rotate(90deg);
+            background-color: #FF5252;
+            color: #FFFFFF;
+            border-color: #FF5252;
+        }
+
+        .modal-image-preview {
+            width: 100%;
+            height: 280px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-text-dark);
+            font-size: 2.5rem;
+            font-weight: 700;
+            box-shadow: inset 0 0 20px rgba(255,255,255,0.4);
+            gap: 0.5rem;
+        }
+
+        .modal-caption {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--color-text-dark);
+            text-align: center;
+        }
+
+        @media (max-width: 900px) {
+            .col-span-6, .col-span-4, .col-span-8 {
+                grid-column: span 12;
+            }
+
+            .gallery-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 1rem 0.5rem;
+            }
+
+            .profile-name {
+                font-size: 2.2rem;
+            }
+
+            .badge-subtitle {
+                font-size: 0.95rem;
+            }
+
+            .tabs-nav {
+                width: 100%;
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding: 0.4rem;
+                border-radius: 20px;
+            }
+
+            .tab-btn {
+                font-size: 0.85rem;
+                padding: 0.5rem 0.9rem;
+                white-space: nowrap;
+            }
+
+            .bento-card {
+                padding: 1.1rem;
+            }
+
+            .gallery-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.6rem;
+            }
+
+            .gallery-item {
+                aspect-ratio: 1 / 1;
+                padding: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- Profile Header Section -->
+        <header class="profile-header">
+            <div class="avatar-wrapper">
+                <div class="avatar-img">
+                    <svg class="avatar-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="50" r="48" fill="#E0F7F7"></circle>
+                        <!-- Cute Minimal Avatar Face -->
+                        <circle cx="50" cy="38" r="22" fill="#24BFC2"></circle>
+                        <circle cx="42" cy="35" r="3" fill="#FFFFFF"></circle>
+                        <circle cx="58" cy="35" r="3" fill="#FFFFFF"></circle>
+                        <path d="M 44 44 Q 50 50 56 44" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" fill="none"></path>
+                        <path d="M 22 82 C 22 65 34 58 50 58 C 66 58 78 65 78 82" fill="#24BFC2"></path>
+                        <!-- Star Accent -->
+                        <polygon points="76,22 79,28 85,29 80,34 82,40 76,37 70,40 72,34 67,29 73,28" fill="#FFE14D"></polygon>
+                    </svg>
+                </div>
+            </div>
+            
+            <h1 class="profile-name">Lali</h1>
+            
+            <div class="badge-subtitle">
+                <span>✨</span>
+                <span>Aprendiz de IA</span>
+            </div>
+        </header>
+
+        <nav class="tabs-nav" aria-label="Menú principal">
+            <button class="tab-btn active" data-category="all">Todas</button>
+            <button class="tab-btn" data-category="presentacion">Presentación</button>
+            <button class="tab-btn" data-category="fechaylugar">Fecha y lugar</button>
+            <button class="tab-btn" data-category="galeria">Galería</button>
+            <button class="tab-btn" data-category="contacto">Contacto</button>
+        </nav>
+
+        <main class="bento-grid">
+            
+            <!-- Card 1: Presentación -->
+            <article class="bento-card open col-span-6 card-accent-primary" data-category="presentacion">
+                <button class="card-header" aria-expanded="true">
+                    <div class="card-title-group">
+                        <div class="card-icon-box">👋</div>
+                        <h2 class="card-title">Presentación</h2>
+                    </div>
+                    <div class="toggle-icon">▼</div>
+                </button>
+                <div class="card-body">
+                    <p>Intentando</p>
+                </div>
+            </article>
+
+            <!-- Card 2: Fecha y lugar -->
+            <article class="bento-card open col-span-6 card-accent-secondary" data-category="fechaylugar">
+                <button class="card-header" aria-expanded="true">
+                    <div class="card-title-group">
+                        <div class="card-icon-box" style="background-color: var(--color-secondary-light); color: #B39200;">📍</div>
+                        <h2 class="card-title">Fecha y lugar</h2>
+                    </div>
+                    <div class="toggle-icon">▼</div>
+                </button>
+                <div class="card-body">
+                    <p><strong>Ubicación:</strong> Buenos Aires, Argentina</p>
+                    <p id="live-date-text" style="margin-top: 0.25rem; color: var(--color-text-muted);"><strong>Fecha:</strong> Martes, 6 de octubre de 2026</p>
+                </div>
+            </article>
+
+            <!-- Card 3: Más info -->
+            <article class="bento-card open col-span-12" data-category="presentacion">
+                <button class="card-header" aria-expanded="true">
+                    <div class="card-title-group">
+                        <div class="card-icon-box">📊</div>
+                        <h2 class="card-title">Más info</h2>
+                    </div>
+                    <div class="toggle-icon">▼</div>
+                </button>
+                <div class="card-body">
+                    <p>Resumen, estadísticas, gráficos</p>
+                    
+                    <div class="info-pills">
+                        <span class="info-pill">📑 Resumen</span>
+                        <span class="info-pill">📈 Estadísticas</span>
+                        <span class="info-pill">📊 Gráficos</span>
+                        <span class="info-pill">🤖 Inteligencia Artificial</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 4: Galería de 6 Imágenes -->
+            <article class="bento-card open col-span-12" data-category="galeria">
+                <button class="card-header" aria-expanded="true">
+                    <div class="card-title-group">
+                        <div class="card-icon-box">🖼️</div>
+                        <h2 class="card-title">Galería de Proyectos</h2>
+                    </div>
+                    <div class="toggle-icon">▼</div>
+                </button>
+                <div class="card-body">
+                    <div class="gallery-container">
+                        <div class="gallery-item" onclick="openModal('Imagen 1', '🖼️')">
+                            <span class="gallery-icon">🎨</span>
+                            <span class="gallery-label">Imagen 1</span>
+                        </div>
+                        <div class="gallery-item" onclick="openModal('Imagen 2', '🤖')">
+                            <span class="gallery-icon">🤖</span>
+                            <span class="gallery-label">Imagen 2</span>
+                        </div>
+                        <div class="gallery-item" onclick="openModal('Imagen 3', '✨')">
+                            <span class="gallery-icon">✨</span>
+                            <span class="gallery-label">Imagen 3</span>
+                        </div>
+                        <div class="gallery-item" onclick="openModal('Imagen 4', '🚀')">
+                            <span class="gallery-icon">🚀</span>
+                            <span class="gallery-label">Imagen 4</span>
+                        </div>
+                        <div class="gallery-item" onclick="openModal('Imagen 5', '💡')">
+                            <span class="gallery-icon">💡</span>
+                            <span class="gallery-label">Imagen 5</span>
+                        </div>
+                        <div class="gallery-item" onclick="openModal('Imagen 6', '🔮')">
+                            <span class="gallery-icon">🔮</span>
+                            <span class="gallery-label">Imagen 6</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 5: Contacto -->
+            <article class="bento-card open col-span-12 card-accent-primary" data-category="contacto">
+                <button class="card-header" aria-expanded="true">
+                    <div class="card-title-group">
+                        <div class="card-icon-box">✉️</div>
+                        <h2 class="card-title">Contacto</h2>
+                    </div>
+                    <div class="toggle-icon">▼</div>
+                </button>
+                <div class="card-body">
+                    <p style="margin-bottom: 0.5rem;">Podés escribirme directamente a mi correo electrónico:</p>
+                    <a href="mailto:laurajorgelinaalvarez@gmail.com" class="contact-btn">
+                        <span>📧</span>
+                        <span>laurajorgelinaalvarez@gmail.com</span>
+                    </a>
+                </div>
+            </article>
+
+        </main>
+    </div>
+
+    <div class="modal-overlay" id="imageModal" role="dialog" aria-modal="true">
+        <div class="modal-content">
+            <button class="modal-close-btn" onclick="closeModal()" aria-label="Cerrar modal">✕</button>
+            <div class="modal-image-preview">
+                <span id="modalIcon">🖼️</span>
+                <span id="modalImageTitle">Imagen 1</span>
+            </div>
+            <p class="modal-caption" id="modalCaptionText">Vista ampliada de la tarjeta de la galería.</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const dateElem = document.getElementById("live-date-text");
+            if (dateElem) {
+                const now = new Date();
+                const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                const dateStr = now.toLocaleDateString('es-ES', options);
+                dateElem.innerHTML = `<strong>Fecha:</strong> ${dateStr.charAt(0).toUpperCase() + dateStr.slice(1)}`;
+            }
+        });
+
+        const cardHeaders = document.querySelectorAll('.card-header');
+        
+        cardHeaders.forEach(header => {
+            header.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const card = header.closest('.bento-card');
+                const isOpen = card.classList.contains('open');
+                
+                if (isOpen) {
+                    card.classList.remove('open');
+                    card.classList.add('closed');
+                    header.setAttribute('aria-expanded', 'false');
+                } else {
+                    card.classList.remove('closed');
+                    card.classList.add('open');
+                    header.setAttribute('aria-expanded', 'true');
+                }
+            });
+        });
+
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const bentoCards = document.querySelectorAll('.bento-card');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Update active tab UI
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                const selectedCategory = button.getAttribute('data-category');
+
+                // Filter cards smoothly
+                bentoCards.forEach(card => {
+                    const cardCategory = card.getAttribute('data-category');
+                    if (selectedCategory === 'all' || cardCategory === selectedCategory) {
+                        card.style.display = 'flex';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 50);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(10px)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 250);
+                    }
+                });
+            });
+        });
+
+        const modal = document.getElementById('imageModal');
+        const modalIcon = document.getElementById('modalIcon');
+        const modalImageTitle = document.getElementById('modalImageTitle');
+        const modalCaptionText = document.getElementById('modalCaptionText');
+
+        function openModal(title, icon) {
+            modalIcon.innerText = icon || '🖼️';
+            modalImageTitle.innerText = title;
+            modalCaptionText.innerText = `Vista previa ampliada para ${title}.`;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scroll
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close on clicking backdrop
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Close on ESC key press
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+    </script>
+
+</body></html>
